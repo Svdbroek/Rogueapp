@@ -1,0 +1,8 @@
+<%= semantic_form_for @character do |f| %>
+  <% f.inputs do %>
+    <%= render "#{@character.current_step}_step", :f => f %>
+  <% end %>
+  <%= f.submit "Back", :name => "back_button" unless @character.first_step? %> 
+  <%= f.submit "Continue" unless @character.last_step? %>
+  <%= f.submit "Complete" if @character.last_step? %>
+<% end %>
